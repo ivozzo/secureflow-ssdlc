@@ -1,0 +1,17 @@
+cloudbees-folder
+build-timeout
+timestamper
+ws-cleanup
+htmlpublisher
+junit
+workflow-aggregator
+pipeline-stage-view
+git
+github
+gitlab-plugin
+bitbucket
+subversion
+ssh-slaves
+matrix-auth
+email-ext
+mailer

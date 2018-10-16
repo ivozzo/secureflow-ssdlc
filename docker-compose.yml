@@ -1,0 +1,52 @@
+version: '3'
+services:
+  java-slave:
+    container_name: slave-java
+    build:
+      context: ./slave/Java
+      dockerfile: Dockerfile
+      args:
+        mvn_version: 3.5.4
+        ant_version: 1.10.5
+    image: ivozzo/slave-java
+    environment:
+      IMAGE_NAME: "slave-java"
+    ports:
+    - "22"
+    volumes:
+    - logvolume01:/var/log
+    depends_on:
+      - "jenkins-master"
+    command: sh -c '/usr/share/wait-for -t 60 master:8080 -- /usr/share/docker-entrypoint.sh -s'
+    restart: always
+    networks:
+      jenkins:
+        aliases:
+          - slave1
+          - java
+
+  jenkins-master:
+    container_name: jenkins-master
+    build:
+      context: ./jenkins
+      dockerfile: Dockerfile
+    image: ivozzo/jenkins
+    environment:
+      JAVA_OPTS: "-Djenkins.install.runSetupWizard=true -Djenkins.slaves.JnlpSlaveAgentProtocol3.enabled=false"
+    ports:
+    - "8080:8080"
+    - "50000:50000"
+    volumes:
+    - jenkins_home:/var/jenkins_home
+    networks: 
+      jenkins:
+        aliases:
+          - master
+          - jenkins
+    
+volumes:
+  jenkins_home: {}
+  logvolume01: {}
+
+networks: 
+  jenkins:

@@ -29,4 +29,8 @@ RUN  mkdir $ANT_HOME \
 #Add user for jenkins with sudo nopassword
 RUN adduser -u 1002 -D jenkins && echo "jenkins ALL = NOPASSWD : ALL" >> /etc/sudoers
 
-EXPOSE 22
+#Copy the entrypoint script and the wait-for-it script
+COPY ./wait-for /usr/share
+COPY ./docker-entrypoint.sh /usr/share
+
+#ENTRYPOINT [ "/bin/ash", "/usr/share/docker-entrypoint.sh", "--start"]
