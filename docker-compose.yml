@@ -32,7 +32,7 @@ services:
       dockerfile: Dockerfile
     image: ivozzo/jenkins
     environment:
-      JAVA_OPTS: "-Djenkins.install.runSetupWizard=true -Djenkins.slaves.JnlpSlaveAgentProtocol3.enabled=false"
+      JAVA_OPTS: "-Djenkins.install.runSetupWizard=false"
     ports:
     - "8080:8080"
     - "50000:50000"
