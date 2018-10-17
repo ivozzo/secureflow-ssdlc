@@ -39,7 +39,7 @@ start(){
     local l_option="$1"
     color_msg $blue "Downloading master JNLP agent, please wait"
     cd /usr/bin
-    wget -nv http://master:8080/jnlpJars/slave.jar
+    wget -nv http://master:8080/jenkins/jnlpJars/slave.jar
     cd
     color_msg $green "Agent downloaded"
 

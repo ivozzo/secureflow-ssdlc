@@ -1,4 +1,4 @@
-FROM java:8u111-jdk-alpine
+FROM jenkins/jnlp-slave:alpine
 
 ARG ant_version
 ARG mvn_version
