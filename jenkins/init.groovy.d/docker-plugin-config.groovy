@@ -15,7 +15,7 @@ def dockerTemplateBaseParameters = [
   environmentsString: '',
   extraHostsString:   '',
   hostname:           '',
-  image:              'jenkinsci/slave:latest',
+  image:              'ivozzo/slave-java:latest',
   macAddress:         '',
   memoryLimit:        null,
   memorySwap:         null,

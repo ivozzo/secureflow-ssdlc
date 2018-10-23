@@ -8,11 +8,13 @@ workflow-aggregator
 pipeline-stage-view
 git
 github
-gitlab-plugin
-bitbucket
 subversion
 ssh-slaves
 matrix-auth
 email-ext
 mailer
 docker-plugin
+sonar
+ant
+jdk-tool
+nodejs

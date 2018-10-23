@@ -44,7 +44,12 @@ services:
         aliases:
           - master
           - jenkins
+  
+  sonar:
+    container_name: sonar
+    image: sonarqube:lts-alpine
     
+
 volumes:
   jenkins_home: {}
   logvolume01: {}
