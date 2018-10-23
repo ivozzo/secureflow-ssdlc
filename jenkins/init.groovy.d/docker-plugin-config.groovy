@@ -39,9 +39,9 @@ def dockerCloudParameters = [
   containerCapStr:  '4',
   credentialsId:    '',
   dockerHostname:   '',
-  name:             'docker.local',
+  name:             'docker.banshee',
   readTimeout:      60,
-  serverUrl:        'unix:///var/run/docker.sock',
+  serverUrl:        'tcp://172.17.0.1:4243',
   version:          ''
 ]
 
