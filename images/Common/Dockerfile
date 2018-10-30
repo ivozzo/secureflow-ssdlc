@@ -1,4 +1,4 @@
-FROM jenkins/jnlp-slave:alpine
+FROM java:8u111-jdk-alpine
 
 ARG sonar_scanner_version
 
