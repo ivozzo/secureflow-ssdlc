@@ -2,7 +2,7 @@ FROM java:8u111-jdk-alpine
 
 ARG sonar_scanner_version
 
-ENV SCANNER_HOME=/home/jenkins/sonar-scanner
+ENV SCANNER_HOME=/opt/sonar-scanner
 
 RUN mkdir -p $SCANNER_HOME \
     && wget -nv -P /tmp https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$sonar_scanner_version-linux.zip \
