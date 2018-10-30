@@ -12,3 +12,5 @@ sonar
 git
 github
 subversion
+uno-choice
+workflow-cps-global-lib
