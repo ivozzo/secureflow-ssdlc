@@ -1,29 +1,44 @@
 version: '3'
 services:
-  java-slave:
-    container_name: slave-java
+  maven-ci:
+    container_name: maven-ci
     build:
-      context: ./slave/Java
+      context: ./images/Maven
       dockerfile: Dockerfile
       args:
         mvn_version: 3.5.4
-        ant_version: 1.10.5
-    image: ivozzo/slave-java
+    image: ivozzo/maven-ci
     environment:
-      IMAGE_NAME: "slave-java"
-    ports:
-    - "22"
+      IMAGE_NAME: "maven-ci"
     volumes:
     - logvolume01:/var/log
     depends_on:
       - "jenkins-master"
-    command: sh -c '/usr/share/wait-for -t 60 master:8080 -- /usr/share/docker-entrypoint.sh -s'
-    restart: always
+    command: echo "maven-ci disabled"
     networks:
-      jenkins:
+      secureflow:
         aliases:
-          - slave1
-          - java
+          - maven
+
+  ant-ci:
+    container_name: ant-ci
+    build:
+      context: ./images/Ant
+      dockerfile: Dockerfile
+      args:
+        ant_version: 1.10.5
+    image: ivozzo/ant-ci
+    environment:
+      IMAGE_NAME: "ant-ci"
+    volumes:
+    - logvolume01:/var/log
+    depends_on:
+      - "jenkins-master"
+    command: echo "ant-ci disabled"
+    networks:
+      secureflow:
+        aliases:
+          - ant
 
   jenkins-master:
     container_name: jenkins-master
@@ -40,7 +55,7 @@ services:
     - ./jenkins/init.groovy.d:/var/jenkins_home/init.groovy.d
     - jenkins_home:/var/jenkins_home
     networks: 
-      jenkins:
+      secureflow:
         aliases:
           - master
           - jenkins
@@ -55,4 +70,4 @@ volumes:
   logvolume01: {}
 
 networks: 
-  jenkins:
+  secureflow:
